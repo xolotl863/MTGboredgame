@@ -1,13 +1,9 @@
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+
 
 public class Card {
     // array of data
     private int strength, defense;
     private String name;
-    private final int MULTIPLE = 2;
-    private ArrayList<Card> deck;
-    private ArrayList<Card> hand;
     private int count = 0;
 
     /**

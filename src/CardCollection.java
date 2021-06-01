@@ -1,14 +1,13 @@
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class CardCollection  {
     ArrayList<Card> hand = new ArrayList<>();
     ArrayList<Card> PlayerBF = new ArrayList<>();
     ArrayList<Card> deck = new ArrayList<>();
-    ArrayList<Card> graveyard = new ArrayList<>();
     ArrayList<Card> AIhand = new ArrayList<>();
     ArrayList<Card> AIBF = new ArrayList<>();
     ArrayList<Card> AIdeck = new ArrayList<>();
-    ArrayList<Card> AIgraveyard = new ArrayList<>();
     private int count = 0;
     private int limit;
     Card thundermawhellkite = new Card("Thundermaw Hellkite", 5, 5);
@@ -45,12 +44,6 @@ public class CardCollection  {
     }
 
 
-
-
-    public void addCreature(String name, int power, int toughness) {
-        Card newCard = new Card (name, power, toughness);
-        deck.add(newCard);
-    }
     public void addForest(int castNum){
         greenCounter++;
         hand.remove(castNum);
@@ -60,25 +53,24 @@ public class CardCollection  {
         //for(int i = handSize; i==6; i++){
         //    hand.set(i, deck.get(0));
         //    deck.remove(0);
-        Card thundermawhellkite = new Card("Thundermaw Hellkite", 5, 5);
+    }
 
-        for(int i = 0; i < 6; i++) {
-            hand.add(thundermawhellkite);
+    public void attack(int atkIndx, int defIndx){
+        if(PlayerBF.get(atkIndx).getStrength() > AIBF.get(defIndx).getToughness()) {
+            AIBF.remove(defIndx);
         }
     }
+
+
+    public int attackNoDef(int atkIndx){
+        return PlayerBF.get(atkIndx).getStrength();
+    }
+
+
 
     public int getLimit()
     {
         return limit;
-    }
-    public Card getThisCard(int index)
-    {
-        return deck.get(index);
-    }
-
-    public void setThisCard(int index, Card newCard)
-    {
-        deck.set(index, newCard);
     }
 
     public String toString()
